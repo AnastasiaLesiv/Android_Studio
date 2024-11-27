@@ -41,8 +41,10 @@ android {
     sourceSets {
         getByName("main") {
             java.srcDir("build/generated/ksp/main/kotlin")
+            res.srcDirs("src/main/res")
         }
     }
+
 }
 
 dependencies {

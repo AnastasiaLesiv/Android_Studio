@@ -23,12 +23,12 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main) // Використовуємо XML макет
 
         val items = listOf(
-            ListItem.TitleItem("Заголовок 1"),
-            ListItem.TextItem("Це приклад тексту 1"),
-            ListItem.PhotoItem(R.drawable.ic_launcher_foreground),
-            ListItem.TitleItem("Заголовок 2"),
-            ListItem.TextItem("Це приклад тексту 2"),
-            ListItem.PhotoItem(R.drawable.ic_launcher_foreground)
+            ListItem.TitleItem("A6 e-tron"),
+            ListItem.TextItem("Задній повний привід Audi S6 e-tron сприяє динаміці водіння завдяки дуже змінному розподілу коліс. Audi S6 e-tron забезпечує системну потужність 370 кВт (405 кВт із системою запуску). S6 Sportback e-tron розганяється від 0 до 100 км/год за 3,9 секунди. Максимальна швидкість становить 240 км/год. Запас ходу понад 670 кілометрів.\n"),
+            ListItem.PhotoItem(R.drawable.web_960_a6_e_tron),
+            ListItem.TitleItem("Q6 e-tron"),
+            ListItem.TextItem("Audi Q6 e-tron 3 є першою серійною моделлю на електричній платформі Premium (PPE) і, отже, є новим еталоном для проектування за допомогою технологій. Нова модель не тільки характеризується вражаючою продуктивністю водіння та заряджання, але й встановлює стандарти щодо запасу ходу та ефективності."),
+            ListItem.PhotoItem(R.drawable.web_960_q6_e_tron)
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
