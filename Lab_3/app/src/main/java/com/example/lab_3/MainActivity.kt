@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_3.ui.theme.Lab_3Theme
@@ -19,33 +20,29 @@ import com.example.lab_3.ui.theme.Lab_3Theme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Lab_3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        setContentView(R.layout.activity_main) // Використовуємо XML макет
 
-        val itemList = listOf(
-            Item("Заголовок 1", "Опис 1"),
-            Item("Заголовок 2", "Опис 2"),
-            Item("Заголовок 3", "Опис 3"),
-            Item("Заголовок 4", "Опис 4"),
-            Item("Заголовок 5", "Опис 5"),
+        val items = listOf(
+            ListItem.TitleItem("Заголовок 1"),
+            ListItem.TextItem("Це приклад тексту 1"),
+            ListItem.PhotoItem(R.drawable.ic_launcher_foreground),
+            ListItem.TitleItem("Заголовок 2"),
+            ListItem.TextItem("Це приклад тексту 2"),
+            ListItem.PhotoItem(R.drawable.ic_launcher_foreground)
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-
-        // Налаштовуємо LayoutManager
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        // Зараз адаптер відсутній, додамо його пізніше
-        recyclerView.adapter = Adapter(itemList)
+        recyclerView.adapter = Adapter(items)
+        recyclerView.adapter?.notifyDataSetChanged()
+        recyclerView.addItemDecoration(decoration)
+        recyclerView.itemAnimator = androidx.recyclerview.widget.DefaultItemAnimator()
+
+
+
     }
+
 }
 
 @Composable
