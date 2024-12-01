@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ListItemEntity::class], version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
-    abstract fun listItemDao(): ListItemDao
+@Database(entities = [ItemEntity::class], version = 1, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() { // Абстрактний клас бази даних Room
+
+    abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile
@@ -18,7 +19,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "list_items_database"
+                    "app_database"
                 ).build()
                 INSTANCE = instance
                 instance

@@ -1,5 +1,6 @@
 package com.example.lab_3
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_3.R
 
-class Adapter(private val items: List<ListItem>) :
+class Adapter(private var items: List<ListItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newItems: List<ListItem>) { // Метод для оновлення даних
+        items = newItems
+        notifyDataSetChanged()
+    }
 
     // ViewHolder для заголовка
     class TitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -76,7 +83,7 @@ class Adapter(private val items: List<ListItem>) :
         }
     }
 
-    override fun getItemCount(): Int {
+    override fun getItemCount(): Int { // Метод для отримання кількості елементів у списку
         Log.d("Adapter", "Item count: ${items.size}")
         return items.size
     }
@@ -86,4 +93,5 @@ class Adapter(private val items: List<ListItem>) :
         const val TYPE_TEXT = 1
         const val TYPE_PHOTO = 2
     }
+
 }
