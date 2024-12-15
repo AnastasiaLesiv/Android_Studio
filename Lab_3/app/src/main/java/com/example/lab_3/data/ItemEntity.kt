@@ -8,5 +8,5 @@ data class ItemEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
     val description: String,
-    val imageResId: Int
-) // Модель даних для бази даних
+    val imageUrl: String // URL для зображення
+)
